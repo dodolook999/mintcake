@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>WEB222 Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/950fef157f.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container_all">
+    <!------------- header ------------->
+    <header>
+      <div>
+        <img id=logoPic src="./images/logo.png" alt="store logo">
+      </div>
+      <div id="logoText">------------- MINT CAKE STORE -------------</div>
+      <nav>
+        <ul class="about">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <nav>
+    </header>
+
+    <!------------- middle ------------->
+    <div class="container">
+      <form action="https://httpbin.org/post" method="POST" id="form-contact" onsubmit="validateForm()"
+        class="p-3 mb-5 rounded p-5">
+        <p id=form_title>Contact us</p>
+        <!--name-->
+        <div class="row mt-2">
+          <div class="col form-group">
+            <label for="firstName"><span class="text-danger">* </span>First Name</label>
+            <input id="firstName" type="text" name="firstName" class="form-control" autocomplete="given-name" autofocus
+              tabindex="1" required>
+          </div>
+          <div class="col form-group">
+            <label for="lastName"><span class="text-danger">* </span>Last Name</label>
+            <input id="lastName" type="text" name="lastName" class="form-control" autocomplete="family-name"
+              tabindex="2" required>
+          </div>
+        </div>
+
+        <!--email-->
+        <div class="row">
+          <div class="col form-group">
+            <label for="email"><span class="text-danger">* </span>Email</label>
+            <input id="email" type="email" name="email" class="form-control" autocomplete="email" tabindex="3"
+              placeholder="example@email.com" required>
+            <small id="emailHelp" class="form-text text-muted ml-5"></small>
+          </div>
+        </div>
+
+        <!--errors-->
+        <div class="errors"></div>
+
+        <!--address-->
+        <label for="address"><span class="text-danger">* </span>Address</label>
+        <input id="address" type="text" name="address" class="form-control mb-2" autocomplete="off" tabindex="4"
+          required>
+
+        <div class="row">
+          <!--city-->
+          <div class="col form-group">
+            <label><span class="text-danger">* </span>City</label>
+            <input list="city" name="city" class="form-control" tabindex="5" required>
+            <datalist id="city">
+              <option value="Toronto"></option>
+              <option value="Vancouver"></option>
+              <option value="Montreal"></option>
+              <option value="Victoria"></option>
+              <option value="Winnipeg"></option>
+              <option value="Halifax"></option>
+              <option value="Yellowknife"></option>
+              <option value="Calgary"></option>
+              <option value="Ottawa"></option>
+              <option value="Mississauga"></option>
+              <option value="Scarborough"></option>
+              <option value="Hamilton"></option>
+              <option value="Quebec"></option>
+            </datalist>
+          </div>
+          <!--postal code-->
+          <div class="col form-group">
+            <label for="postalCode"><span class="text-danger">* </span>Postal Code</label>
+            <input id="postalCode" type="text" name="postalCode" class="form-control" autocomplete="postal-code"
+              placeholder="L3R 0B5" tabindex="6" pattern="^[A-Z]\d[A-Z] \d[A-Z]\d$" required>
+          </div>
+        </div>
+
+        <!--radio option-->
+        <label class="form-check-label mt-2 mb-1"><span class="text-danger">* </span>What this is about?</label>
+        <div class="form-control">
+          <input type="radio" name="about" value="Question" onclick="clearOrderNumber()" tabindex="7" checked> Question
+          <input type="radio" name="about" value="Comment" onclick="clearOrderNumber()" tabindex="8"> Comment
+          <input type="radio" name="about" value="Order Problem" onclick="addOrderNumber()" tabindex="9"> Order Problem
+        </div>
+        <div id="order_number"></div>
+
+        <!--message-->
+        <label for="textbox" class="form-check-label mt-2 mb-1"><span class="text-danger">* </span>Enter the
+          message</label>
+        <textarea name="textbox" class="form-control" id="textbox" cols="30" rows="10"
+          placeholder="Write your message..." required></textarea>
+
+        <!--my name-->
+        <input type="hidden" name="studentName" value="Minyan Zhang">
+
+        <!--submit-->
+        <div class="d-flex flex-row-reverse bd-highlight mt-3">
+          <input type="submit" name="submit" value="Submit" class="btn btn-secondary">
+          <input type="reset" name="reset" value="Clear" onclick="clearErrors()" class="btn btn-secondary mr-3">
+        </div>
+      </form>
+    </div>
+    <!--end middle-->
+
+    <!-------------- footer ----------------->
+    <footer id="footer">
+      <p id="separator">*****</p>
+      <div id="footer_div">
+        <div id="footerTitle">--------------------- MINT CAKE STORE ---------------------</div>
+        <br><br>
+        <aside id="news">
+          <div id="newsletter">NEWSLETTER</div>
+          <form action="https://formspree.io/mdowbqlb" method="POST">
+            <label for="email">Your email: </label>
+            <input type="email" name="email" placeholder="example@email.com" required>
+            <button type="submit" id="button">Subscribe</button>
+          </form>
+        </aside>
+        <aside id="share">
+          <span id="touch">GET IN TOUCH: </span>
+          <img class="shareImg" src='images/social/facebook.png' alt='facebook'>
+          <img class="shareImg" src='images/social/twitter.png' alt='twitter'>
+          <img class="shareImg" src='images/social/ins.png' alt='instagram'>
+          <img class="shareImg" src='images/social/youtube.png' alt='youtube'>
+        </aside>
+      </div>
+
+      <div id="bottom">
+        <div id="space">*******</div>
+        <br><br><br>
+      </div>
+    </footer>
+  </div>
+  <!--end container-->
+</body>
+
+</html>
